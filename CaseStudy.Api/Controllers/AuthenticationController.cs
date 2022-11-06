@@ -1,4 +1,6 @@
+using CaseStudy.Api.ApiModles;
 using CaseStudy.Application.Authentication;
+using CaseStudy.Application.Interfaces;
 using CaseStudy.Contracts.Authentication;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;

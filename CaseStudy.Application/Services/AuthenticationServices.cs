@@ -1,4 +1,7 @@
-namespace CaseStudy.Application.Authentication;
+using CaseStudy.Application.Authentication;
+using CaseStudy.Application.Interfaces;
+
+namespace CaseStudy.Application.Services;
 
 public class AuthenticationServices : IAuthenticationServices
 {
@@ -25,6 +28,6 @@ public class AuthenticationServices : IAuthenticationServices
             Password = password,
             Tokens = "tokens"
         };
-    }
+    }    
 }
 

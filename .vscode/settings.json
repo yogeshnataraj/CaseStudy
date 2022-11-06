@@ -1,0 +1,29 @@
+{
+    "files.exclude": {
+        ".vscode/*": true,
+        ".vscode/settings.json": false,
+        ".vscode/tasks.json": false,
+        ".vscode/launch.json": false,
+        ".vscode/extensions.json": false,
+        ".vscode/*.code-snippets": false,
+        "**/.history/": true,
+        "**/*.vsix": true,
+        "**/.history": true,
+        "**/.ionide": true,
+        "**/Thumbs.db": true,
+        "**/Thumbs.db:encryptable": true,
+        "**/ehthumbs.db": true,
+        "**/ehthumbs_vista.db": true,
+        "**/*.stackdump": true,
+        "**/[Dd]esktop.ini": true,
+        "**/$RECYCLE.BIN/": true,
+        "**/*.cab": true,
+        "**/*.msi": true,
+        "**/*.msix": true,
+        "**/*.msm": true,
+        "**/*.msp": true,
+        "**/*.lnk": true,
+        "*/bin": true,
+        "*/obj": true
+    }
+}

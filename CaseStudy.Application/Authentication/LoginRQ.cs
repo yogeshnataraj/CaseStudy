@@ -1,4 +1,4 @@
-namespace CaseStudy.Contracts.Authentication;
+namespace CaseStudy.Application.Authentication;
 
 public record LoginRQ
 {
