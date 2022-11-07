@@ -10,7 +10,8 @@ using Microsoft.Extensions.Logging;
 
 namespace CaseStudy.Api.Controllers
 {
-    [Route("[controller]")]
+    [ApiController]
+    [Route("api/product")]
     public class ProductController : ControllerBase
     {
         private readonly ILogger<ProductController> _logger;
@@ -22,13 +23,13 @@ namespace CaseStudy.Api.Controllers
             _productService = productService;
         }
 
-        [HttpGet("{guid: productId}")]
+        [HttpGet("{productId:Guid}")]
         public async Task<ProductResponse> GetProductAsync([FromQuery] Guid productId)
         {
             return await _productService.GetProductAsync(productId);
         }
 
-        [HttpPost]
+        [HttpPost("create")]
         public async Task<Guid> CreateProductAsync([FromBody] ProductDTO product)
         {
             return await _productService.CreateProductAsync(product);

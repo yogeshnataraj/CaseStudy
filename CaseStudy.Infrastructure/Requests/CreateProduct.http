@@ -1,0 +1,16 @@
+POST https://localhost:7041/api/product/create HTTP/1.1
+Content-Type: application/json
+
+{
+  "productId": "3f060547-80e2-4650-89b8-c63a3a7bde79",
+  "productName": "Test_Product1",
+  "productYear": 2022,
+  "channelId": 1,
+  "sizeScaleId": "f51a5b2e-6cd4-4492-8205-fccc286fc6f0",
+  "articles": [
+    {
+      "ArticleId": "d6473e71-462f-4793-a735-4362c646eb9f",
+      "ColourId": "bb9b6ef8-fb93-48a2-9441-d42a74c716a3"
+    }
+  ]
+}
