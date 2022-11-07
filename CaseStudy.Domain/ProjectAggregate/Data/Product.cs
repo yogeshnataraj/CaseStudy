@@ -13,9 +13,12 @@ public class Product
     public string Name { get; set; }
     public int Year { get; set; }
     public int ChennalId { get; set; }
-    public string ProductName => GetProductName(ChennalId);
+    public string ProductName { get; set; }
+    public string ProductCode => GetProductName(ChennalId);
     public Guid SizeScaleId { get; set; }
     public ICollection<Artical> Articals { get; set; }
+    public DateTime CreateDate => DateTime.UtcNow;
+    public string CreatedBy { get; set; }
 
     private string GetProductName(int chennalId)
     {

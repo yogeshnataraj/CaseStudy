@@ -11,12 +11,12 @@ namespace CaseStudy.Application.Authentication
         public Guid ProductId { get; set; }
         public string ProductName { get; set; }
         public string ProductCode { get; set; }
-        public string SizeScaleId { get; set; }
-        public string CreateDate { get; set; }
+        public Guid SizeScaleId { get; set; }
+        public DateTime CreateDate { get; set; }
         public string CreatedBy { get; set; }
-        string ChannelId { get; set; }
+        public int ChannelId { get; set; }
         public List<Article> Articles { get; set; }
-        public List<Size> Sizes { get; set; }
+        public List<Sizes> Sizes { get; set; }
     }
 
     public record Article

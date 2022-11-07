@@ -24,7 +24,7 @@ namespace CaseStudy.Api.Controllers
         }
 
         [HttpGet("{productId:Guid}")]
-        public async Task<ProductResponse> GetProductAsync([FromQuery] Guid productId)
+        public async Task<ProductResponse> GetProductAsync([FromRoute] Guid productId)
         {
             return await _productService.GetProductAsync(productId);
         }
