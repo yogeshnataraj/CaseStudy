@@ -20,6 +20,7 @@ namespace CaseStudy.Infrastructure.Repositorys
         {
             //get data from the database
             var query = _dbContact.Products.AsQueryable();
+            query = query.Include(t => t.Articals);
 
             var product = await query.SingleOrDefaultAsync(t => t.ProductId == productId);
 

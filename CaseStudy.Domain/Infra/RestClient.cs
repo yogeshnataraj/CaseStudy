@@ -8,7 +8,7 @@ namespace CaseStudy.Domain.Infra
 {
     public interface IRestClient
     {
-        Task<string> GetColors();
-        Task<string> GetSizes();
+        Task<List<Domain.ProjectAggregate.Data.Color>> GetColors();
+        Task<List<Domain.ProjectAggregate.Data.Size>> GetSizes();
     }
 }

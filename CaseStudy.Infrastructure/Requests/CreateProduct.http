@@ -6,11 +6,11 @@ Content-Type: application/json
   "productName": "Test_Product1",
   "productYear": 2022,
   "channelId": 1,
-  "sizeScaleId": "f51a5b2e-6cd4-4492-8205-fccc286fc6f0",
+  "sizeScaleId": "58b7d976-d37e-3b16-8477-fd942752bbcf",
   "articles": [
     {
       "ArticleId": "d6473e71-462f-4793-a735-4362c646eb9f",
-      "ColourId": "bb9b6ef8-fb93-48a2-9441-d42a74c716a3"
+      "ColourId": "4b1943d7-480f-3c32-aa18-35b335604fbe"
     }
   ]
 }

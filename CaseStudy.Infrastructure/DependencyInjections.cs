@@ -4,6 +4,7 @@ using CaseStudy.Domain.Infra;
 using CaseStudy.Domain.Interfaces;
 using CaseStudy.Infrastructure.Data;
 using CaseStudy.Infrastructure.Repositorys;
+using CaseStudy.Infrastructure.RestClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,7 +21,7 @@ public static class DependencyInjection
 
         services.AddScoped<IProductRepository, ProductRepository>();
 
-        services.AddScoped<IRestClient, IRestClient>();
+        services.AddScoped<IRestClient, RestClient>();
 
         return services;
     }

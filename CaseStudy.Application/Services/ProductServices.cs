@@ -30,6 +30,7 @@ namespace CaseStudy.Application.Services
             var productModel = new Product
             {
                 ProductId = product.ProductId,
+                ProductName = product.ProductName,
                 ChennalId = product.ChannelId,
                 SizeScaleId = product.SizeScaleId,
                 Year = product.ProductYear,
@@ -64,22 +65,20 @@ namespace CaseStudy.Application.Services
             };
 
             //Get Articles and Colors 
-            var jsoncolor = await _client.GetColors();
-            var articles = JsonSerializer.Deserialize<List<Domain.ProjectAggregate.Color>>(jsoncolor);
+            var articles = await _client.GetColors();
 
             //Add Articles and color obj
             productDto.Articles = productModel.Articals.Select(t => new Article
             {
                 ArticleId = t.ArticalId,
                 ColourId = t.ColorId,
-                ArticleName = $"{productModel.ProductName} - {articles.Find(a => a.ColorId == t.ColorId).ColourCode}",
-                ColourCode = articles.Find(a => a.ColorId == t.ColorId).ColourCode,
-                ColourName = articles.Find(a => a.ColorId == t.ColorId).ColourName
+                ArticleName = $"{productModel.ProductName.ToString()} - {articles.Find(a => a.ColorId == t.ColorId).colourCode}",
+                ColourCode = articles.Find(a => a.ColorId == t.ColorId).colourCode,
+                ColourName = articles.Find(a => a.ColorId == t.ColorId).colorName
             }).ToList();
 
             //Get Size 
-            var jsonsize = await _client.GetColors();
-            var sizes = JsonSerializer.Deserialize<List<Domain.ProjectAggregate.Data.Size>>(jsonsize);
+            var sizes = await _client.GetSizes();
 
             productDto.Sizes = sizes.Where(t => t.SizeId == productModel.SizeScaleId).Select(s => new Sizes()
             {
