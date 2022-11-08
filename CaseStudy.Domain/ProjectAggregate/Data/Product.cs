@@ -22,9 +22,7 @@ public class Product
 
     private string GetProductName(int chennalId)
     {
-
         string productName = string.Empty;
-
         switch (chennalId)
         {
             case 1:
@@ -42,7 +40,7 @@ public class Product
         return productName;
     }
 
-    public static string GetAlphaNumeric(int length)
+    private static string GetAlphaNumeric(int length)
     {
         const string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         return new string(Enumerable.Repeat(characters, length)
