@@ -1,5 +1,6 @@
 using CaseStudy.Application.Authentication;
 using CaseStudy.Application.Interfaces;
+using CaseStudy.Domain.Exceptions;
 using CaseStudy.Domain.Interfaces;
 using CaseStudy.Domain.ProjectAggregate.Data;
 using Microsoft.Extensions.Caching.Memory;
@@ -47,7 +48,7 @@ namespace CaseStudy.Application.Services
             var productModel = await _productRepository.GetProducts(productId);
 
             if (productModel is null)
-                throw new Exception("the particular product not found");
+                throw new ProducNotFoundException();
 
             var productDto = new ProductResponse
             {

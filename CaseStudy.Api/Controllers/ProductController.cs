@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using CaseStudy.Application.Authentication;
 using CaseStudy.Application.Interfaces;
@@ -30,9 +31,10 @@ namespace CaseStudy.Api.Controllers
         }
 
         [HttpPost("create")]
-        public async Task<Guid> CreateProductAsync([FromBody] ProductDTO product)
+        public async Task<IActionResult> CreateProductAsync([FromBody] ProductDTO product)
         {
-            return await _productService.CreateProductAsync(product);
+            var productId = await _productService.CreateProductAsync(product);
+            return new ObjectResult(productId) { StatusCode = (int)HttpStatusCode.Created };
         }
     }
 }

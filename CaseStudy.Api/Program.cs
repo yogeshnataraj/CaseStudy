@@ -2,6 +2,7 @@ using CaseStudy.Application;
 using CaseStudy.Application.Authentication;
 using CaseStudy.Domain;
 using CaseStudy.Contracts;
+using CaseStudy.Api.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 {
@@ -19,6 +20,7 @@ var app = builder.Build();
 {
     app.UseRouting();
     app.UseHttpsRedirection();
+    app.UseMiddleware<ExceptionMessageMiddleware1>();
     app.MapControllers();
     app.Run();
 }
