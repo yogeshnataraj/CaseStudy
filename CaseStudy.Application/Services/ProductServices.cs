@@ -1,17 +1,7 @@
-using System.Diagnostics;
-using System.Drawing;
-using System.Runtime.Serialization;
-using System.Net;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using CaseStudy.Application.Authentication;
 using CaseStudy.Application.Interfaces;
 using CaseStudy.Domain.Interfaces;
 using CaseStudy.Domain.ProjectAggregate.Data;
-using CaseStudy.Domain.Infra;
-using System.Text.Json;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace CaseStudy.Application.Services

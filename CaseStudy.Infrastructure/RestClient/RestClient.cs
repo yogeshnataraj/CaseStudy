@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
-using CaseStudy.Domain.Infra;
+using CaseStudy.Domain.Interfaces;
 using Newtonsoft.Json;
 
 namespace CaseStudy.Infrastructure.RestClient

@@ -1,6 +1,3 @@
-using System.Data.Common;
-using CaseStudy.Application.Authentication;
-using CaseStudy.Domain.Infra;
 using CaseStudy.Domain.Interfaces;
 using CaseStudy.Infrastructure.Data;
 using CaseStudy.Infrastructure.Repositorys;
