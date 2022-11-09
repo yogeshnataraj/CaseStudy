@@ -12,17 +12,23 @@ using CaseStudy.Domain.Interfaces;
 using CaseStudy.Domain.ProjectAggregate.Data;
 using CaseStudy.Domain.Infra;
 using System.Text.Json;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace CaseStudy.Application.Services
 {
     public class ProductServices : IProductServices
     {
+        private const string colorKey = "Colors";
+        private const string sizekey = "Sizes";
+
         private readonly IProductRepository _productRepository;
+        private readonly IMemoryCache _memory;
         private readonly IRestClient _client;
 
-        public ProductServices(IProductRepository productRepository, IRestClient client)
+        public ProductServices(IProductRepository productRepository, IRestClient client, IMemoryCache memory)
         {
             _productRepository = productRepository;
+            _memory = memory;
             _client = client;
         }
         public async Task<Guid> CreateProductAsync(ProductDTO product)
@@ -64,23 +70,35 @@ namespace CaseStudy.Application.Services
                 ChannelId = productModel.ChennalId,
             };
 
+            var listcolor = default(List<Domain.ProjectAggregate.Data.Color>);
+            listcolor = _memory.Get<List<Domain.ProjectAggregate.Data.Color>>(colorKey);
+            if (listcolor is null)
+            {
+                listcolor = await _client.GetColors();
+                _memory.Set<List<Domain.ProjectAggregate.Data.Color>>(colorKey, listcolor);
+            }
+
+            var listsize = default(List<Domain.ProjectAggregate.Data.Size>);
+            listsize = _memory.Get<List<Domain.ProjectAggregate.Data.Size>>(sizekey);
+            if (listsize is null)
+            {
+                listsize = await _client.GetSizes();
+                _memory.Set<List<Domain.ProjectAggregate.Data.Size>>(sizekey, listsize);
+            }
+
             //Get Articles and Colors 
-            var articles = await _client.GetColors();
 
             //Add Articles and color obj
             productDto.Articles = productModel.Articals.Select(t => new Article
             {
                 ArticleId = t.ArticalId,
                 ColourId = t.ColorId,
-                ArticleName = $"{productModel.ProductName.ToString()} - {articles.Find(a => a.ColorId == t.ColorId).colourCode}",
-                ColourCode = articles.Find(a => a.ColorId == t.ColorId).colourCode,
-                ColourName = articles.Find(a => a.ColorId == t.ColorId).colorName
+                ArticleName = $"{productModel.ProductName.ToString()} - {listcolor.Find(a => a.ColorId == t.ColorId).colourCode}",
+                ColourCode = listcolor.Find(a => a.ColorId == t.ColorId).colourCode,
+                ColourName = listcolor.Find(a => a.ColorId == t.ColorId).colorName
             }).ToList();
 
-            //Get Size 
-            var sizes = await _client.GetSizes();
-
-            productDto.Sizes = sizes.Where(t => t.SizeId == productModel.SizeScaleId).Select(s => new Sizes()
+            productDto.Sizes = listsize.Where(t => t.SizeId == productModel.SizeScaleId).Select(s => new Sizes()
             {
                 SizeId = s.SizeId,
                 SizeName = s.SizeName

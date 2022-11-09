@@ -10,6 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddInfra(builder.Configuration);
     builder.Services.AddContract();
     builder.Services.AddControllers();
+    builder.Services.AddMemoryCache(options => {
+        options.ExpirationScanFrequency = TimeSpan.FromDays(1);
+    });
 }
 
 var app = builder.Build();
